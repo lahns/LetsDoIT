@@ -7,25 +7,25 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserService {
+public class UserrService {
     @Autowired
     private UserRepository UserRepository;
 
-    public User createUser(User user){
+    public Userr createUser(Userr user){
         return UserRepository.save(user);
     }
-    public List<User> createUsers(List<User> users){
+    public List<Userr> createUsers(List<Userr> users){
         return UserRepository.saveAll(users);
     }
-    public User getUserById(int id){
+    public Userr getUserById(int id){
         return UserRepository.findById(id).orElse(null);
     }
-    public List<User> getUsers(){
+    public List<Userr> getUsers(){
         return UserRepository.findAll();
     }
-    public User updateUser(User user){
-        User oldUser=null;
-        Optional<User> optionaluser = UserRepository.findById(user.getId());
+    public Userr updateUser(Userr user){
+        Userr oldUser=null;
+        Optional<Userr> optionaluser = UserRepository.findById(user.getId());
         if(optionaluser.isPresent()){
             oldUser=optionaluser.get();
             oldUser.setUsername(user.getUsername());
@@ -33,7 +33,7 @@ public class UserService {
             UserRepository.save(oldUser);
         }
         else{
-            return new User();
+            return new Userr();
         }
         return oldUser;
     }
